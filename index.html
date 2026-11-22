@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공연날 주차 한눈에 | 올림픽공원</title>
+<meta name="description" content="올림픽공원 공연 일정, 실시간 주차 대수, 2025년 입출차 기록으로 본 공연날 주차 흐름을 한 화면에 모았습니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Ctext x='16' y='23' font-size='18' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="wrap head">
+  <h1>공연날 주차 한눈에</h1>
+  <p class="sub">올림픽공원 공연 일정과 주차 기록을 한 화면에 모았습니다.</p>
+  <nav class="chips" id="chips" aria-label="날짜 고르기"></nav>
+</header>
+
+<main class="wrap">
+  <section class="card" id="shows" aria-live="polite">
+    <h2 id="shows-title">공연</h2>
+    <div id="shows-body"><p class="muted">불러오는 중입니다.</p></div>
+  </section>
+
+  <section class="card" id="live">
+    <h2>지금 주차 대수 <span class="tag">동2·남2·북2문 구역</span></h2>
+    <p class="big" id="live-num">…</p>
+    <p class="muted" id="live-time"></p>
+    <p class="note">한국체육산업개발이 공개하는 실시간 값입니다. 기관 설명대로 장기 주차 차량은 출차 기록이 없어 실제보다 많게 나올 수 있습니다. 그래서 아래 2025년 기록과 같은 기준으로 비교하지 않습니다.</p>
+  </section>
+
+  <section class="card">
+    <h2>공연날 하루 흐름 <span class="tag">2025년 기록</span></h2>
+    <p id="curve-lead" class="lead"></p>
+    <div id="curve" class="chart" role="img" aria-label="시간대별 주차 대수 그래프"></div>
+    <p class="legend"><span class="sw sw-show"></span>KSPO DOME 주말 공연일 <span class="sw sw-base"></span>월~목 공연 없는 날 <span class="muted">· 선은 중앙값, 띠는 가운데 50%</span></p>
+    <p class="note">동2·남2·북2문으로 들어와 아직 나가지 않은 차를 10분마다 센 값입니다. 2025년 1~11월 입출차 기록(문화빅데이터플랫폼)으로 계산했습니다.</p>
+  </section>
+
+  <section class="card">
+    <h2>출입문별로 보면 <span class="tag">2025년 기록</span></h2>
+    <p id="gate-lead" class="lead"></p>
+    <div id="gates"></div>
+    <p class="note">채움 정도 = 공연날 가장 붐빈 10분의 대수 ÷ 그 문의 평소 최고치(2025년 하루 최대 대수의 상위 5% 지점). 주차면수가 공개되지 않아 면수 대신 썼습니다. 각 주차장에서 공연장까지 걷는 거리는 아직 확인하지 못했습니다.</p>
+  </section>
+
+  <section class="card">
+    <h2>만차 기록 <span class="tag" id="cong-tag"></span></h2>
+    <p id="cong-lead" class="lead"></p>
+    <div id="zones"></div>
+    <p class="note">공공데이터포털 '주차장 혼잡도 정보'(한국체육산업개발)는 상태가 바뀔 때만 기록돼, 기록이 없는 날이 많습니다.</p>
+  </section>
+
+  <section class="card src">
+    <h2>출처</h2>
+    <ul id="sources">
+      <li>공연 일정: <a href="https://www.ksponco.or.kr/olympicpark/eventInfo/eventInfoList?mid=a20301010100" target="_blank" rel="noopener">올림픽공원 홈페이지 공연정보</a> <span class="muted" id="sched-time"></span></li>
+      <li>실시간 주차: <a href="https://www.ksponco.or.kr/pubData/64?mid=a10106020000" target="_blank" rel="noopener">한국체육산업개발 개방데이터 '올림픽공원 실시간 주차현황'</a> (공공데이터포털 15168686)</li>
+      <li>입출차 기록: 문화빅데이터플랫폼 '올림픽공원 차량 이용현황 데이터' 2025-01~11 (출처 표기 한국체육산업개발㈜)</li>
+      <li>혼잡도: <a href="https://www.data.go.kr/data/15164156/fileData.do" target="_blank" rel="noopener">공공데이터포털 15164156 주차장 혼잡도 정보</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap foot muted">이 서비스는 한국체육산업개발 개방 데이터를 활용한 개인 제작물이며, 기관의 공식 안내가 아닙니다.</footer>
+<script src="app.js"></script>
+</body>
+</html>
